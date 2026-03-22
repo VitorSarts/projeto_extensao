@@ -4,9 +4,7 @@ USE clube_socios;
 CREATE TABLE socios_login (
   id_socio INT AUTO_INCREMENT PRIMARY KEY,
   nome_completo VARCHAR(255) NOT NULL,
-  email_login VARCHAR(255) UNIQUE NOT NULL, -- Login fornecido
-  senha_hash VARCHAR(255) NOT NULL,         -- Senha fornecida
-  numero_carteirinha VARCHAR(50) UNIQUE NOT NULL
+  email_login VARCHAR(255) UNIQUE NOT NULL, 
 );
 
 CREATE TABLE reservas_socios (
