@@ -12,7 +12,6 @@ export default function NewReservationPage() {
   const [reservationDateValue, setReservationDateValue] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Busca espaços reais ao montar a página
   useEffect(() => {
     async function fetchSpaces() {
       try {
@@ -118,8 +117,6 @@ export default function NewReservationPage() {
           <section className="admin-form-panel">
             <form className="admin-form" onSubmit={handleFormSubmit}>
               <div className="admin-form-grid">
-
-                {/* Tipo de cliente */}
                 <div className="admin-form-group">
                   <label htmlFor="clientTypeValue">Tipo de cliente</label>
                   <select
@@ -134,7 +131,6 @@ export default function NewReservationPage() {
                   </select>
                 </div>
 
-                {/* ID do cliente */}
                 <div className="admin-form-group">
                   <label htmlFor="clientIdValue">
                     {clientTypeValue === "socio"
@@ -157,15 +153,31 @@ export default function NewReservationPage() {
                   />
                 </div>
 
-                {/* Espaço */}
                 <div className="admin-form-group">
                   <label htmlFor="spaceValue">Espaço</label>
+
                   {spacesLoading && (
-                    <p className="admin-form-input">Carregando espaços...</p>
+                    <input
+                      id="spaceValue"
+                      type="text"
+                      className="admin-form-input"
+                      value="Carregando espaços..."
+                      disabled
+                      readOnly
+                    />
                   )}
+
                   {spacesError && (
-                    <p className="admin-form-input">{spacesError}</p>
+                    <input
+                      id="spaceValue"
+                      type="text"
+                      className="admin-form-input"
+                      value={spacesError}
+                      disabled
+                      readOnly
+                    />
                   )}
+
                   {!spacesLoading && !spacesError && (
                     <select
                       id="spaceValue"
@@ -186,7 +198,6 @@ export default function NewReservationPage() {
                   )}
                 </div>
 
-                {/* Data da reserva */}
                 <div className="admin-form-group">
                   <label htmlFor="reservationDateValue">Data da reserva</label>
                   <input
@@ -200,7 +211,6 @@ export default function NewReservationPage() {
                     required
                   />
                 </div>
-
               </div>
 
               <div className="admin-form-actions">

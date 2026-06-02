@@ -8,6 +8,8 @@ import AdminPlaceholderPage from "./pages/AdminPlaceholderPage";
 import InsertUserPage from "./pages/InsertUserPage";
 import SpaceInformationPage from "./pages/SpaceInformationPage";
 import NewReservationPage from "./pages/NewReservationPage";
+import PaymentsPage from "./pages/PaymentsPage";
+import ReportsPage from "./pages/ReportsPage";
 
 function AreaSocioPage() {
   return (
@@ -32,16 +34,12 @@ function App() {
       <Route path="/area-socio" element={<AreaSocioPage />} />
       <Route path="/area-admin" element={<AreaAdminPage />} />
 
-      <Route path="/admin/reservas-usuario" element={<AdminPlaceholderPage />} />
-      <Route path="/admin/relatorio-espacos" element={<AdminPlaceholderPage />} />
-      <Route path="/admin/editar-espacos" element={<AdminPlaceholderPage />} />
-      <Route path="/admin/inserir-cliente" element={<AdminPlaceholderPage />} />
-      <Route path="/admin/pagamentos" element={<AdminPlaceholderPage />} />
-      <Route path="/admin/relatorio-pagamentos" element={<AdminPlaceholderPage />} />
-
       <Route path="/admin/inserir-usuario" element={<InsertUserPage />} />
       <Route path="/admin/informacoes-espacos" element={<SpaceInformationPage />} />
       <Route path="/admin/nova-reserva" element={<NewReservationPage />} />
+      <Route path="/admin/pagamentos" element={<PaymentsPage />} />
+      <Route path="/admin/relatorios" element={<ReportsPage />} />
+
     </Routes>
   );
 }

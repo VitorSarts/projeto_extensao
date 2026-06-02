@@ -597,13 +597,23 @@ body {
 
 
 /* =========================
-   INSERIR USUÁRIO
+   FORMULÁRIOS ADMINISTRATIVOS
+   (Inserir usuário / Nova reserva)
 ========================= */
+
+.admin-form-input-placeholder {
+  display: flex;
+  align-items: center;
+  min-height: 46px;
+  color: #111827;
+  padding-top: 0;
+  padding-bottom: 0;
+}
 
 .admin-form-panel {
   width: 100%;
   max-width: 920px;
-  padding: 24px;
+  padding: 28px 26px 24px 26px;
   border-radius: 22px;
   background: rgba(255, 255, 255, 0.07);
   border: 1px solid rgba(255, 255, 255, 0.12);
@@ -616,13 +626,15 @@ body {
 
 .admin-form-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(220px, 1fr));
-  gap: 18px 20px;
+  grid-template-columns: repeat(2, minmax(260px, 1fr));
+  gap: 22px 20px;
+  align-items: start;
 }
 
 .admin-form-group {
   display: flex;
   flex-direction: column;
+  min-width: 0;
 }
 
 .admin-form-group-full {
@@ -639,6 +651,7 @@ body {
 .admin-form-input,
 .admin-form-textarea {
   width: 100%;
+  min-height: 46px;
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 14px;
   background: rgba(255, 255, 255, 0.95);
@@ -661,15 +674,17 @@ body {
 }
 
 .admin-form-actions {
-  margin-top: 24px;
+  margin-top: 28px;
   display: flex;
   justify-content: flex-end;
+  align-items: center;
   gap: 12px;
   flex-wrap: wrap;
 }
 
 .admin-form-primary-button,
 .admin-form-secondary-button {
+  min-width: 150px;
   border: none;
   border-radius: 14px;
   padding: 12px 18px;
@@ -697,21 +712,6 @@ body {
 
 .admin-form-secondary-button:hover {
   background: rgba(255, 255, 255, 0.14);
-}
-
-@media (max-width: 768px) {
-  .admin-form-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .admin-form-actions {
-    justify-content: stretch;
-  }
-
-  .admin-form-primary-button,
-  .admin-form-secondary-button {
-    width: 100%;
-  }
 }
 
 /* =========================
@@ -900,10 +900,265 @@ body {
   box-shadow: 0 4px 10px rgba(15, 23, 42, 0.08);
 }
 
+/* =========================
+   PAYMENTS PAGE
+========================= */
+
+.payments-page-panel {
+  width: 100%;
+  max-width: 1100px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.payments-page-summary-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(180px, 1fr));
+  gap: 18px;
+}
+
+.payments-page-summary-card {
+  min-height: 110px;
+  padding: 20px 22px;
+  border-radius: 20px;
+  background: linear-gradient(180deg, #ffffff, #f3f4f6);
+  box-shadow:
+    0 10px 25px rgba(15, 23, 42, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+}
+
+.payments-page-summary-number {
+  color: #312e81;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.payments-page-summary-label {
+  color: #312e81;
+  font-size: 18px;
+  line-height: 1.35;
+}
+
+.payments-page-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.payments-page-table {
+  width: 100%;
+  min-width: 920px;
+  border-collapse: collapse;
+}
+
+.payments-page-table thead th {
+  padding: 16px 18px;
+  text-align: left;
+  color: #f8fafc;
+  font-size: 14px;
+  font-weight: 700;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.payments-page-table tbody td {
+  padding: 16px 18px;
+  color: #f1f5f9;
+  font-size: 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  vertical-align: middle;
+}
+
+.payments-page-table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.payments-page-status-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.payments-page-status-paid {
+  background: rgba(34, 197, 94, 0.18);
+  color: #bbf7d0;
+}
+
+.payments-page-status-pending {
+  background: rgba(245, 158, 11, 0.18);
+  color: #fde68a;
+}
+
+.payments-page-status-exempt {
+  background: rgba(59, 130, 246, 0.18);
+  color: #bfdbfe;
+}
+
+.payments-page-action-group {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.payments-page-action-button {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  padding: 8px 14px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #111827;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.payments-page-action-button:hover {
+  background: #ffffff;
+  transform: translateY(-1px);
+}
+
+.payments-page-action-button-primary {
+  background: linear-gradient(180deg, #ffffff, #dbeafe);
+  color: #1e3a8a;
+  border-color: rgba(37, 99, 235, 0.24);
+}
+
+.payments-page-action-button-primary:hover {
+  background: linear-gradient(180deg, #ffffff, #bfdbfe);
+}
+
+/* =========================
+   REPORTS PAGE
+========================= */
+
+.reports-page-panel {
+  width: 100%;
+  max-width: 1100px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.reports-page-summary-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(180px, 1fr));
+  gap: 18px;
+}
+
+.reports-page-summary-card {
+  min-height: 110px;
+  padding: 20px 22px;
+  border-radius: 20px;
+  background: linear-gradient(180deg, #ffffff, #f3f4f6);
+  box-shadow:
+    0 10px 25px rgba(15, 23, 42, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+}
+
+.reports-page-summary-number {
+  color: #312e81;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.reports-page-summary-label {
+  color: #312e81;
+  font-size: 18px;
+  line-height: 1.35;
+}
+
+.reports-page-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.reports-page-report-card {
+  padding: 24px 22px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.reports-page-report-title {
+  margin: 0;
+  color: #f8fafc;
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.reports-page-report-description {
+  margin: 0;
+  color: #e5e7eb;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.reports-page-report-actions {
+  margin-top: 6px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.reports-page-action-button {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  padding: 10px 18px;
+  background: rgba(255, 255, 255, 0.92);
+  color: #111827;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.reports-page-action-button:hover {
+  background: #ffffff;
+  transform: translateY(-1px);
+}
+
 
 /* =========================
    RESPONSIVIDADE
 ========================= */
+
+@media (max-width: 992px) {
+  .reports-page-summary-row {
+    grid-template-columns: 1fr;
+  }
+
+  .reports-page-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 992px) {
+  .payments-page-summary-row {
+    grid-template-columns: 1fr;
+  }
+}
 
 @media (max-width: 992px) {
   .admin-dashboard-main-with-sidebar {
@@ -916,6 +1171,26 @@ body {
 
   .admin-dashboard-summary-grid {
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .admin-form-panel {
+    padding: 22px 18px;
+  }
+
+  .admin-form-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .admin-form-actions {
+    justify-content: stretch;
+  }
+
+  .admin-form-primary-button,
+  .admin-form-secondary-button {
+    width: 100%;
   }
 }
 

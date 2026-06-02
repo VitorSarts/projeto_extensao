@@ -15,7 +15,7 @@ export default function AreaAdminPage() {
     },
     {
       title: "Relatórios",
-      path: "/admin/relatorio-espacos",
+      path: "/admin/relatorioS",
     },
     {
       title: "Pagamentos",
